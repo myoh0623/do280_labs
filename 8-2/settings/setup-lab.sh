@@ -44,8 +44,10 @@ oc delete configmap team-config -n production 2>/dev/null || true
 # 대기
 sleep 2
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # 문제가 있는 애플리케이션 배포
-oc apply -f /home/student/Desktop/DO280_labs/8-2/settings/production-broken-app.yaml
+oc apply -f "${SCRIPT_DIR}/production-broken-app.yaml"
 
 echo ""
 echo "⏳ 리소스 배포 대기 중 (5초)..."
